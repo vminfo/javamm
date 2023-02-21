@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>info.vm</groupId>
+        <artifactId>javamm</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
+    <artifactId>vm</artifactId>
+
+    <name>Javamm virtual machine</name>
+    <description>Default VM for javamm programming language</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>info.vm</groupId>
+            <artifactId>compiler</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>info.vm</groupId>
+            <artifactId>interpreter</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>info.vm</groupId>
+            <artifactId>library</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+    </dependencies>
+
+</project>
