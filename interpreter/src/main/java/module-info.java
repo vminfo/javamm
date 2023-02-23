@@ -4,4 +4,7 @@
  */
 module javamm.interpreter {
     requires javamm.code;
+
+    exports info.vm.javamm.interpreter;
+    exports info.vm.javamm.interpreter.component;
 }

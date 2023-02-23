@@ -1,30 +1,18 @@
 package info.vm.javamm.cmd;
 
-import java.util.List;
-import info.vm.javamm.code.fragment.ByteCode;
-import info.vm.javamm.code.fragment.SourceCode;
-import info.vm.javamm.compiler.Compiler;
-import info.vm.javamm.compiler.CompilerConfigurator;
+import java.io.IOException;
+import info.vm.javamm.compiler.JavammSyntaxError;
+import info.vm.javamm.interpreter.JavammRuntimeError;
+import info.vm.javamm.vm.VirtualMachine;
+import info.vm.javamm.vm.VirtualMachineBuilder;
 
 public class JmmVmLauncher {
-    public static void main(final String[] args) {
-        final Compiler compiler = new CompilerConfigurator().getCompiler();
-        final ByteCode byteCode = compiler.compile(new SourceCode() {
-            @Override
-            public String getModuleName() {
-                return "test";
-            }
-
-            @Override
-            public List<String> getLines() {
-                return List.of(
-                    "println ( HelloWorld )",
-                    "",
-                    "println ( HelloJava )",
-                    "println ( VovaFCSM )"
-                );
-            }
-        });
-        System.out.println(byteCode.getCode());
+    public static void main(final String[] args) throws IOException {
+        final VirtualMachine virtualMachine = new VirtualMachineBuilder().build();
+        try {
+            virtualMachine.run(new FileSourceCode("cmd/src/main/resources/test.javamm"));
+        } catch (final JavammSyntaxError | JavammRuntimeError e) {
+            System.err.println(e.getMessage());
+        }
     }
 }
